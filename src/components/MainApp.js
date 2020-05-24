@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import '../App.css'
 
-const api = {
-  key: "b44c382eee66fc24d39ca91de23760a0",
-  base: "https://api.openweathermap.org/data/2.5/"
-}
+  const api = {
+    key: "b44c382eee66fc24d39ca91de23760a0",
+    base: "https://api.openweathermap.org/data/2.5/"
+  }
 
-function MainApp() {
+  function MainApp() {
     const [query, setQuery] = useState('');
     const [weather, setWeather] = useState({});
-  
     const search = e => {
       if (e.key === "Enter") {
         fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
@@ -31,16 +30,18 @@ function MainApp() {
     return `${day}, ${month}/${date}/${year}`
   }
 
+  
   return (
-    <div className={(typeof weather.main != "undefined") ? ((weather.main.temp > 29) ? 'MainApp hot' : 'MainApp') : 'MainApp'}>
+    <div className={(typeof weather.main != "undefined") ? ((weather.main.temp <= 13) ? 'MainApp cold' : 
+                    ((weather.main.temp >= 18) ? 'MainApp hot' : 'MainApp breezy')) : 'MainApp'}>
       <main>
         {(typeof weather.main != "undefined") ? (
         <div>
           <div className="location-container">
             <div className="location">{weather.name}, {weather.sys.country}</div>
-            <div className="date">{dates(new Date())}</div>
           </div>
           <div className="weather-container">
+          <div className="date">{dates(new Date())}</div>
             <div className="temperature">
               {Math.round(weather.main.temp)}°c
             </div>
