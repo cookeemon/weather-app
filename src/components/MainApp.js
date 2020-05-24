@@ -44,7 +44,11 @@ function MainApp() {
             <div className="temperature">
               {Math.round(weather.main.temp)}°c
             </div>
-            <div className="weather">{weather.weather[0].main}</div>
+            <div className="temperatureTwo">
+              Feels Like {Math.round(weather.main.feels_like)}°c
+            </div>
+            <div className="weather">Cloudiness: {weather.clouds.all}%</div>
+            <div className="weather">Wind Speed: {Math.round(weather.wind.speed * 2.237)}mph</div>
           </div>
         </div>
         ) : ('')}
