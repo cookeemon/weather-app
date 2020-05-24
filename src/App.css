@@ -1,38 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Josefin Sans';
+}
+
 .App {
+  background-image: url('./backgrounds/defaultBackground.jpg');
+  background-size: cover;
+  background-position: bottom;
+}
+
+.App.cold {
+  background-image: url('./backgrounds/cold.jpg');
+}
+
+.App.warm {
+  background-image: url('./backgrounds/hot.jpg');
+}
+
+.App.breezy {
+  background-image: url('./backgrounds/breezy.jpg');
+}
+
+main {
+  min-height: 100vh;
+  padding: 25px;
+}
+
+.search-box {
+  margin: 0 auto;
+  margin-top: 5%;
+  
+}
+
+.search-box .search-bar {
+  display: block;
+  width: 33%;
+  padding: 20px;
+  position: relative;
+  margin: 0 auto;
+  top: 100px;
+  border: none;
+  outline: none;
+  background-color: rgb(88, 87, 87);
+  border-radius: 10px 10px 10px 10px;
+  color: rgb(88, 87, 87);
+  font-size: 25px;
+  opacity: 80%;
+}
+/* click on the search bar and the color changes */
+.search-box .search-bar:focus {
+  background-color: rgb(255, 255, 255);
+  opacity: 90%;
+}
+
+.location-container .location {
+  color: rgb(0, 0, 0);
+  font-size: 50px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.location-container .date {
+  color: rgb(110, 110, 110);
+  font-size: 30px;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.weather-container {
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 5%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.weather-container .temperature {
+  position: relative;
+  display: inline-block;
+  margin: 30px;
+
+  color: rgb(36, 36, 36);
+  font-size: 120px;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.weather-container .weather {
+  color: rgb(42, 42, 42);
+  font-size: 48px;
 }
