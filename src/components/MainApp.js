@@ -11,7 +11,7 @@ import '../App.css'
     const [weather, setWeather] = useState({});
     const search = e => {
       if (e.key === "Enter") {
-        fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+        fetch(`${api.base}weather?q=${query}&units=imperial&APPID=${api.key}`)
           .then(res => res.json())
           .then(result => {
             setWeather(result);
@@ -32,8 +32,8 @@ import '../App.css'
 
   
   return (
-    <div className={(typeof weather.main != "undefined") ? ((weather.main.temp <= 13) ? 'MainApp cold' : 
-                    ((weather.main.temp >= 18) ? 'MainApp hot' : 'MainApp breezy')) : 'MainApp'}>
+    <div className={(typeof weather.main != "undefined") ? ((weather.main.temp <= 50) ? 'MainApp cold' : 
+                    ((weather.main.temp >= 70) ? 'MainApp hot' : 'MainApp breezy')) : 'MainApp'}>
       <main>
         {(typeof weather.main != "undefined") ? (
         <div>
@@ -43,17 +43,16 @@ import '../App.css'
           <div className="weather-container">
           <div className="date">{dates(new Date())}</div>
             <div className="temperature">
-              {Math.round(weather.main.temp)}°c
+              {Math.round(weather.main.temp)}°F
             </div>
             <div className="temperatureTwo">
-              Feels Like {Math.round(weather.main.feels_like)}°c
+              Feels Like {Math.round(weather.main.feels_like)}°F
             </div>
             <div className="weather">Cloudiness: {weather.clouds.all}%</div>
-            <div className="weather">Wind Speed: {Math.round(weather.wind.speed * 2.237)}mph</div>
+            <div className="weather">Wind: {Math.round(weather.wind.speed * 2.237)}mph</div>
           </div>
         </div>
         ) : ('')}
-
         <div className="search-box">
           <input 
             type="text"
